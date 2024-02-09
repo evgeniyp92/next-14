@@ -16,7 +16,7 @@ const SnippetView = async (props: SnippetShowPageProps) => {
   });
 
   if (!snippet) {
-    return notFound();
+    return notFound(); // this will traverse the folder structure and use the very first not-found file it can find
   }
 
   return <div>{snippet.title}</div>;
