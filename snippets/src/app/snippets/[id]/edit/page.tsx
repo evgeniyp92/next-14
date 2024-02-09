@@ -1,4 +1,6 @@
 import React from "react";
+import { db } from "@/db";
+import { notFound } from "next/navigation";
 
 interface SnippetEditProps {
   params: {
@@ -6,10 +8,19 @@ interface SnippetEditProps {
   };
 }
 
-const SnippetEdit = (props: SnippetEditProps) => {
+const SnippetEdit = async (props: SnippetEditProps) => {
   const id = parseInt(props.params.id);
+  const snippet = await db.snippet.findFirst({
+    where: {
+      id,
+    },
+  });
 
-  return <div>Editing snippet with id {id}</div>;
+  if (!snippet) {
+    return notFound();
+  }
+
+  return <div>Editing snippet with title {snippet.title}</div>;
 };
 
 export default SnippetEdit;
