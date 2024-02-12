@@ -45,4 +45,11 @@ const SnippetView = async (props: SnippetShowPageProps) => {
   );
 };
 
+export async function generateStaticParams() {
+  const snippets = await db.snippet.findMany();
+  return snippets.map(s => {
+    return { id: s.id.toString() };
+  });
+}
+
 export default SnippetView;
