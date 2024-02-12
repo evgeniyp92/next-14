@@ -1,5 +1,7 @@
-import Link from "next/link";
-import { db } from "@/db";
+import Link from 'next/link';
+import { db } from '@/db';
+
+export const dynamic = 'force-dynamic'; // treat this as a dynamic route no matter what
 
 export default async function Home() {
   // Only need HTTP requests to make requests to 3-rd party sites
@@ -21,7 +23,9 @@ export default async function Home() {
     <div>
       <div className='flex m-2 justify-between items-center'>
         <h1 className='text-xl font-bold'>Snippets</h1>
-        <Link href='/snippets/new' className='border p-2 rounded border-black'>
+        <Link
+          href='/snippets/new'
+          className='border p-2 rounded border-black'>
           New
         </Link>
       </div>
