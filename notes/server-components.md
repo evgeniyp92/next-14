@@ -33,3 +33,11 @@ Use client components if you need to use hooks, event handlers, or something els
 Otherwise use server components
 
 NB: Client components are still rendered on the server, then rehydrated on the client and their code runs again
+
+## Key thing about server actions in client components
+
+Server actions cannot be **defined** in client components, but can be defined and exported in other files and imported into the file you want to use them in, or defined in a parent server component and pass it down to the child that uses client rendering
+
+Server components cannot pass event handlers down to client components but you can pass down server actions.
+
+## Options for calling server actions
