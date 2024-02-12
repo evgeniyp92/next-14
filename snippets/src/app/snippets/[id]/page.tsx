@@ -1,7 +1,8 @@
-import React from "react";
-import { db } from "@/db";
-import { notFound } from "next/navigation";
-import Link from "next/link";
+import React from 'react';
+import { db } from '@/db';
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import * as actions from '@/actions';
 
 interface SnippetShowPageProps {
   params: { id: string };
@@ -20,6 +21,8 @@ const SnippetView = async (props: SnippetShowPageProps) => {
     return notFound(); // this will traverse the folder structure and use the very first not-found file it can find
   }
 
+  const deleteSnippetAction = actions.deleteSnippet.bind(null, snippet.id);
+
   return (
     <div>
       <div className='flex m-4 justify-between items-center'>
@@ -30,7 +33,9 @@ const SnippetView = async (props: SnippetShowPageProps) => {
             className='p-2 border rounded'>
             Edit
           </Link>
-          <button className='p-2 border rounded'>Delete</button>
+          <form action={deleteSnippetAction}>
+            <button className='p-2 border rounded'>Delete</button>
+          </form>
         </div>
       </div>
       <pre className='p-3 border rounded bg-gray-200 border-gray-200'>
