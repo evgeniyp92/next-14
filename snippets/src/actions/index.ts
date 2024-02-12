@@ -2,6 +2,7 @@
 
 import { db } from '@/db';
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 export async function editSnippet(id: number, code: string) {
   await db.snippet.update({
@@ -17,6 +18,7 @@ export async function deleteSnippet(id: number) {
     where: { id },
   });
 
+  revalidatePath('/');
   redirect(`/`);
 }
 
@@ -56,5 +58,6 @@ export async function createSnippet(
     }
   }
   // Redirect the user to the home page for now (snippet page for later)
+  revalidatePath('/');
   redirect('/'); // this actually throws a very specific error that next is looking out for, and trycatch will catch redirects and break them
 }

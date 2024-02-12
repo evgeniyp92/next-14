@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import { db } from '@/db';
 
-export const dynamic = 'force-dynamic'; // treat this as a dynamic route no matter what
-
 export default async function Home() {
   // Only need HTTP requests to make requests to 3-rd party sites
   const snippets = await db.snippet.findMany();
