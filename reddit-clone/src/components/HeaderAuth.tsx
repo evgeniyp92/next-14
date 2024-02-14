@@ -28,7 +28,8 @@ export default function HeaderAuth() {
             <form action={actions.signOut}>
               <Button
                 type='submit'
-                color='danger'>
+                color='danger'
+                variant='flat'>
                 Sign Out
               </Button>
             </form>
@@ -44,7 +45,7 @@ export default function HeaderAuth() {
             <Button
               type='submit'
               color='secondary'
-              variant='bordered'>
+              variant='flat'>
               Sign In
             </Button>
           </form>
