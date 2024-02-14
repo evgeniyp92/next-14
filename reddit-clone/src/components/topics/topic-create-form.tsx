@@ -12,7 +12,7 @@ import { useFormState } from 'react-dom';
 function TopicCreateForm() {
   // type here needs to match with the first arg received by server action and
   // the server action return
-  const [formState, action] = useFormState(actions.createTopic, 5);
+  const [formState, action] = useFormState(actions.createTopic, { errors: {} });
 
   return (
     <Popover placement='left'>
