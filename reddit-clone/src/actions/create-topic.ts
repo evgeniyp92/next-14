@@ -2,6 +2,10 @@
 
 import { z } from 'zod';
 import { auth } from '@/auth';
+import type { Topic } from '@prisma/client';
+import { redirect } from 'next/navigation';
+import { db } from '@/db';
+import paths from '@/paths';
 
 const createTopicSchema = z.object({
   name: z
@@ -39,6 +43,10 @@ export async function createTopic(
       },
     };
   }
+
+  let topic: Topic;
+  try {
+  } catch (error: unknown) {}
 
   if (!result.success) {
     return {
